@@ -17,8 +17,9 @@
 # limitations under the License.
 #
 
-default[:openvpn][:local]   = ipaddress
-default[:openvpn][:proto]   = "udp"
+#default[:openvpn][:local]   = ipaddress
+default[:openvpn][:local]   = '184.82.227.170'
+default[:openvpn][:proto]   = "tcp"
 default[:openvpn][:type]    = "server"
 default[:openvpn][:subnet]  = "10.8.0.0"
 default[:openvpn][:netmask] = "255.255.0.0"

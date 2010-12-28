@@ -49,6 +49,7 @@ end
   
 template "/etc/openvpn/server.up.sh" do
   source "server.up.sh.erb"
+  variables :openvpn => node[:openvpn]
   owner "root"
   group "root"
   mode 0755

@@ -1,3 +1,5 @@
 .rake_test_cache
 .chef/*
 client-config/*
+
+cookbooks/openvpn/files/default/keys/*

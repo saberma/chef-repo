@@ -1,18 +1,9 @@
 {
   "id": "55true",
-  "server_roles": [
-    "rails"
-  ],
-  "type": {
-    "rails": [
-      "rails",
-    ]
-  },
-  "repository": "git@github.com:saberma/55true.git",
+  "repository": "git://github.com/saberma/55true.git",
   "revision": {
-    "production": "commit hash, branch or tag to deploy"
+    "production": "HEAD"
   },
-  "deploy_key": "SSH private key used to deploy from a private git repository",
   "deploy_to": "/srv/55true"
   "owner": "deploy",
   "group": "deploy",

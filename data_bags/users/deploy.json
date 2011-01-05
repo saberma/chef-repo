@@ -1,0 +1,8 @@
+{
+  "id": "deploy",
+  "ssh_keys": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA8c3KcHD98SUBVk4RFqaTjbJamwl1Hw6vXPHYidIxLnH/j+uaML8t2d7NjYqPdFu0mv8YTE5rRwK24mcl8DyQYRqpPiv9mxE6vkIkNXWRK2Jx9yQ0aobNRS0A2TMElns294JuoaxVm9ViKf1B+j1qqJwX9W/2FNYbww4Gw33ZGutDMqeJzzZ+a0uD1zoYq74KohIL0r3iKPdRwqwZgFhDPg8cLmjZXQGIB8VMtWJ0fSM7w1Q36GlXPNpJYRveSIXyavSaY25H6WkQgu7/tLyNWD2BrYwSo5TiVM390gAWr+mmSg40YJDPzEAFm6FIszfxdnnxzWvgRjTjkqKgnYgcQQ== lenovo-sl410k",
+  "groups": "sysadmin",
+  "uid": 2001,
+  "shell": "\/bin\/bash",
+  "comment": "sl410k ssh key"
+}

@@ -4,7 +4,7 @@
   "revision": {
     "production": "HEAD"
   },
-  "deploy_to": "/srv/55true"
+  "deploy_to": "/srv/55true",
   "owner": "deploy",
   "group": "deploy",
   "migrate": {

@@ -64,7 +64,7 @@ attribute "mongodb/pidfile",
 attribute "mongodb/port",
   :display_name => "MongoDB port",
   :description => "Accept connections on the specified port",
-  :default => "27017"
+  :default => "27092"
 
 
 

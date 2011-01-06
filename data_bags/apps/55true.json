@@ -5,6 +5,7 @@
     "production": "HEAD"
   },
   "deploy_to": "/srv/55true",
+  "mongodb_uri": "mongodb://localhost:27092",
   "owner": "deploy",
   "group": "deploy",
   "migrate": {

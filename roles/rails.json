@@ -1,0 +1,16 @@
+{
+  "name": "rails",
+  "description": "this role will install rvm, ruby on rails, and unicorn",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "users::sysadmins",
+    "rvm::default",
+    "rvm::ruby_192",
+    "rails3-deploy::default"
+  ]
+}

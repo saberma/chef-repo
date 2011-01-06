@@ -1,0 +1,20 @@
+{
+  "name": "55true_run_migrations",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "apps": {
+      "55true": {
+        "production": {
+          "run_migrations": true
+        }
+      }
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+
+  ]
+}

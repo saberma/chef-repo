@@ -25,7 +25,7 @@ search(:apps) do |app|
 
     :user => 2001, #app
     :gid => 2300,  #sysadmin
-    :cpu_limit => 30,
+    :cpu_limit => 10,
     :memory_limit => 30
   })
   

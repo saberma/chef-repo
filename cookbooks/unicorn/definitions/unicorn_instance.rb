@@ -1,12 +1,12 @@
 define :unicorn_instance, :enable => true do
 
-  template params[:conf_path] do
+  template params[:config_path] do
     source "unicorn.conf.erb"
     cookbook "unicorn"
     variables params
   end
 
-  bluepill_monitor app do
+  bluepill_service "bluepill_service_#{params[:app]}" do
     cookbook 'unicorn'
     source "bluepill.conf.erb"
     unicorn_log_path "#{params[:app_root]}/shared/log/unicorn.log"

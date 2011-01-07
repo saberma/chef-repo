@@ -12,7 +12,7 @@
     "production": true
   },
   "force": {
-    "production": true
+    "production": false
   },
   "packages": {
   },

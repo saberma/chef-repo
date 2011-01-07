@@ -1,19 +1,13 @@
 {
-  "name": "unicorn",
-  "description": "Configures unicorn",
+  "name": "bluepill",
+  "description": "Installs bluepill and provides definitions and templates for monitoring",
   "long_description": "",
-  "maintainer": "unicorn",
-  "maintainer_email": "sysadmins@37signals.com",
-  "license": "Apache v2.0",
+  "maintainer": "Joshua Sierles",
+  "maintainer_email": "joshua@37signals.com",
+  "license": "Apache 2.0",
   "platforms": {
   },
   "dependencies": {
-    "rvm": [
-
-    ],
-    "runit": [
-
-    ]
   },
   "recommendations": {
   },
@@ -31,5 +25,5 @@
   },
   "recipes": {
   },
-  "version": "0.1.0"
+  "version": "0.7.0"
 }

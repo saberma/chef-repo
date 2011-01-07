@@ -1,0 +1,26 @@
+upstream <%= "#{@name}_app_server" %> {
+  server unix:<%= @socket_path %> fail_timeout=0;
+}
+
+server {
+  listen   80;
+  server_name  <%= node[:hostname] %>;
+
+  access_log  <%= node[:nginx][:log_dir] %>/localhost.access.log;
+
+  root  <%= @app_root %>/current/public;
+
+  location / {
+    root   <%= @app_root %>/current;
+    if (!-f $request_filename) {
+      proxy_pass http://<%= "#{@name}_app_server" %>;
+      break;
+    }
+  }
+
+  # Rails error pages
+  error_page 500 502 503 504 /500.html;
+  location = /500.html {
+    root   <%= @app_root %>/current/public;
+  }
+}

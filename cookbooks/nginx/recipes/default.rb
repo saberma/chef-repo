@@ -54,3 +54,23 @@ service "nginx" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end
+
+nginx_site "default" do
+  enable false
+end
+
+search(:apps) do |app|
+  name = app[:id]
+
+  template "#{node[:nginx][:dir]}/sites-available/#{name}" do
+    source "unicorn-site.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    variables :name => name, :socket_path => "/tmp/unicorn/#{name}.sock", :app_root => "/srv/#{name}"
+  end
+
+  nginx_site name do
+    enable false
+  end
+end

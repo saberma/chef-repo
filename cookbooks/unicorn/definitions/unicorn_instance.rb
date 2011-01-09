@@ -1,6 +1,9 @@
 define :unicorn_instance, :enable => true do
 
   template params[:config_path] do
+    owner 'app'
+    group 'app'
+    mode '644'
     source "unicorn.conf.erb"
     cookbook "unicorn"
     variables params

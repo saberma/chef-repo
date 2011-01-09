@@ -47,7 +47,7 @@ search(:apps) do |app|
     directory "#{app['deploy_to']}/shared/#{dir}" do
       owner app['owner']
       group app['group']
-      mode '0755'
+      mode '0666'
       recursive true
     end
 

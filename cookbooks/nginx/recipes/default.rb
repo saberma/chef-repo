@@ -67,7 +67,7 @@ search(:apps) do |app|
     owner "root"
     group "root"
     mode 0644
-    variables :name => name, :socket_path => "/tmp/unicorn/#{name}.sock", :app_root => "/srv/#{name}"
+    variables :name => name, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/srv/#{name}"
   end
 
   nginx_site name do

@@ -8,7 +8,7 @@ search(:apps) do |app|
     :pid_path => "#{app_root}/shared/pids/unicorn.pid",
     :worker_count => node[:unicorn][:worker_count],
     :time_out => node[:unicorn][:timeout],
-    :socket_path => "/tmp/unicorn/#{name}.sock",
+    :socket_path => "/tmp/unicorn-#{name}.sock",
     :backlog_limit => 1,
     :master_bind_address => '0.0.0.0',
     :master_bind_port => "37#{counter}00",
@@ -23,10 +23,12 @@ search(:apps) do |app|
     :config_path => "#{app_root}/current/config/unicorn.conf.rb",
     :use_bundler => false,
 
-    :user => 2001, #app
+    :user => 2002, #app
     :gid => 2300,  #sysadmin
     :cpu_limit => 10,
-    :memory_limit => 30
+    :memory_limit => 30,
+
+    :mongodb_uri => 'mongodb://localhost:27092'
   })
   
   config = defaults
@@ -44,7 +46,7 @@ search(:apps) do |app|
   end
     
   service "unicorn-#{name}" do
-    action config[:enable] ? [:enable, :start] : [:disable, :stop]
+    action [:enable, :start]
   end
 
   counter += 1

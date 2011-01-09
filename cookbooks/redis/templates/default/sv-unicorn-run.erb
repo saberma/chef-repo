@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec chpst -u app:app <%= node[:redis][:dir] %>/redis-server 2>&1

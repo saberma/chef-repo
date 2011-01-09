@@ -18,5 +18,7 @@
   },
   "gems": {
     "bundler": ""
-  }
+  },
+
+  need_resque: true
 }

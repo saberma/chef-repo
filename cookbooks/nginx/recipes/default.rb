@@ -71,6 +71,6 @@ search(:apps) do |app|
   end
 
   nginx_site name do
-    enable false
+    enable true
   end
 end

@@ -26,7 +26,6 @@ unless platform?("centos","redhat","fedora")
 end
 
 redis_version = node[:redis][:version]
-configure_flags = node[:redis][:configure_flags].join(" ")
 
 remote_file "/tmp/redis-#{redis_version}.tar.gz" do
   source "https://github.com/antirez/redis/tarball/#{redis_version}"
@@ -43,18 +42,38 @@ bash "compile_redis_source" do
   cwd "/tmp"
   code <<-EOH
     tar zxf redis-#{redis_version}.tar.gz
-    cd redis-#{redis_version}
+    cd antirez-redis-*
     make
     cp -r src #{node[:redis][:dir]}
   EOH
   creates "#{node[:redis][:dir]}/redis-server"
 end
 
-template "/etc/redis/redis.conf" do
+runit_service "redis-server" do
+  template_name "redis"
+  cookbook "redis"
+end
+
+template "/etc/redis.conf" do
   notifies :restart, resources(:service => "redis-server")
 end
 
+bash "compile_redis_source" do
+  cwd "/tmp"
+  code <<-EOH
+    tar zxf redis-#{redis_version}.tar.gz
+    cd antirez-redis-*
+    make
+    cp -r src/* #{node[:redis][:dir]}
+  EOH
+  creates "#{node[:redis][:dir]}/redis-server"
+end
+
 runit_service "redis-server" do
-  template_name "redis-server"
+  template_name "redis"
   cookbook "redis"
+end
+
+template "/etc/redis.conf" do
+  notifies :restart, resources(:service => "redis-server")
 end

@@ -27,17 +27,36 @@ case node[:platform]
     package "libssl-dev"
 end
 
-bash "install nodejs from source" do
-  cwd "/usr/local/src"
-  user "root"
-  code <<-EOH
-    wget http://nodejs.org/dist/node-v#{node[:nodejs][:version]}.tar.gz && \
-    tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
-    cd node-v#{node[:nodejs][:version]} && \
-    ./configure --prefix=#{node[:nodejs][:dir]} && \
-    make && \
-    make install
-  EOH
-  not_if do `#{node[:nodejs][:dir]}/bin/node -v`.include? "v#{node[:nodejs][:version]}" end
+nodejs_version = node[:nodejs][:version]
+
+remote_file "/tmp/nodejs-#{nodejs_version}.tar.gz" do
+  source "http://nodejs.org/dist/node-v#{nodejs_version}.tar.gz"
+  action :create_if_missing
 end
 
+directory node[:nodejs][:dir] do
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
+bash "compile_nodejs_source" do
+  cwd "/tmp"
+  user "root"
+  code <<-EOH
+    tar zxf node-#{nodejs_version}.tar.gz
+    cd node-v#{node[:nodejs][:version]}
+    ./configure --prefix=#{node[:nodejs][:dir]}
+    make
+    make install
+  EOH
+  creates "#{node[:redis][:dir]}/bin/node"
+end
+
+search(:apps, 'need_nodejs:true') do |app|
+  runit_service "nodejs-server" do
+    template_name "nodejs"
+    options :app_root => app[:deploy_to], :binary_path => "#{node[:nodejs][:dir]}/bin/node"
+    cookbook "nodejs"
+  end
+end

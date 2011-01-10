@@ -77,6 +77,10 @@ search(:apps) do |app|
     action app['force'][node.app_environment] ? :force_deploy : :deploy
 
     before_migrate do
+      execute "git submodule update --init" do
+        ignore_failure true
+        cwd release_path
+      end
       if app['gems'].has_key?('bundler')
         execute "bundle install" do
           ignore_failure true

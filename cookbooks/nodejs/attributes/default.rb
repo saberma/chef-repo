@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 
-default.nodejs[:version] = "0.2.4"
-default.nodejs[:dir] = "/usr/local"
+default.nodejs[:version] = "0.2.6"
+default.nodejs[:dir] = "/opt/nodejs-#{nodejs[:version]}"
 default.nodejs[:npm] = "0.2.5-1"

@@ -12,7 +12,7 @@
     "production": true
   },
   "force": {
-    "production": false
+    "production": true
   },
   "packages": {
   },
@@ -20,5 +20,6 @@
     "bundler": ""
   },
 
-  need_resque: true
+  "need_resque": true,
+  "need_nodejs": true
 }

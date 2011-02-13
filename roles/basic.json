@@ -9,6 +9,7 @@
   "chef_type": "role",
   "run_list": [
     "apt::default",
+    "users::sysadmins",
     "runit::default",
     "bluepill::default"
   ]

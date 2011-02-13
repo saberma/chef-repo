@@ -9,11 +9,15 @@ define :unicorn_instance, :enable => true do
     variables params
   end
 
-  bluepill_service "bluepill_service_#{params[:app]}" do
+  parent_params = params.except(:name)
+  
+  bluepill_service "bluepill_service_#{parent_params[:app]}" do
     cookbook 'unicorn'
     source "bluepill.conf.erb"
-    unicorn_log_path "#{params[:app_root]}/shared/log/unicorn.log"
-    params.each { |k, v| send(k.to_sym, v) }
+    unicorn_log_path "#{parent_params[:app_root]}/shared/log/unicorn.log"
+    #fixed: paras has set to a new hash, not the parent params
+    #params.each { |k, v| send(k.to_sym, v) }
+    parent_params.each { |k, v| send(k.to_sym, v) }
   end
 
 end

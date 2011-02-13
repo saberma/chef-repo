@@ -1,3 +1,5 @@
+gem_package "i18n"
+
 gem_package "bluepill" do
   version node[:bluepill][:version]
 end

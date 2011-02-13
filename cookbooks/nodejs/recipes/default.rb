@@ -44,7 +44,7 @@ bash "compile_nodejs_source" do
   cwd "/tmp"
   user "root"
   code <<-EOH
-    tar zxf node-#{nodejs_version}.tar.gz
+    tar zxf nodejs-#{nodejs_version}.tar.gz
     cd node-v#{node[:nodejs][:version]}
     ./configure --prefix=#{node[:nodejs][:dir]}
     make

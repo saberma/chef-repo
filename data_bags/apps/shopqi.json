@@ -18,6 +18,8 @@
     "staging": true
   },
   "packages": {
+    "libmagickcore-dev": "",
+    "libmagickwand-dev": "",
     "imagemagick": ""
   },
   "gems": {

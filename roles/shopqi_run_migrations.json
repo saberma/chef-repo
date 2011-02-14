@@ -1,13 +1,13 @@
 {
-  "name": "55true_run_migrations",
+  "name": "shopqi_run_migrations",
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
   },
   "override_attributes": {
     "apps": {
-      "55true": {
-        "production": {
+      "shopqi": {
+        "staging": {
           "run_migrations": true
         }
       }

@@ -18,6 +18,7 @@
     "staging": true
   },
   "packages": {
+    "imagemagick": ""
   },
   "gems": {
     "bundler": ""

@@ -6,4 +6,4 @@ export MONGODB_URI=<%= @mongodb_uri %>
 #fixed error:Could not find RubyGem unicorn
 export GEM_HOME=<%= node[:languages][:ruby][:gems_dir] %>
 cd <%= @app_root %>/current
-exec chpst -u app:app <%= @binary_path %> -E <%= @env %> -c <%= @config_path %> <%= "-d" if @debug %> > <%= @app_root %>/shared/log/unicorn.log 2>&1
+exec chpst -u deploy:deploy <%= @binary_path %> -E <%= @env %> -c <%= @config_path %> <%= "-d" if @debug %> > <%= @app_root %>/shared/log/unicorn.log 2>&1

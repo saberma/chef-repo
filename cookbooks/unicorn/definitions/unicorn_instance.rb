@@ -1,4 +1,5 @@
 define :unicorn_instance, :enable => true do
+  require_recipe "bluepill"
 
   template params[:config_path] do
     owner 'app'

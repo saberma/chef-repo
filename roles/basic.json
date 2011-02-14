@@ -10,7 +10,6 @@
   "run_list": [
     "apt::default",
     "users::sysadmins",
-    "runit::default",
-    "bluepill::default"
+    "runit::default"
   ]
 }

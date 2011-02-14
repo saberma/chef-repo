@@ -1,0 +1,14 @@
+{
+  "name": "ruby",
+  "description": "this role will install rvm",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "rvm::default",
+    "rvm::ruby_192"
+  ]
+}

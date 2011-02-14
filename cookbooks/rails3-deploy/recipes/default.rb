@@ -73,7 +73,7 @@ search(:apps) do |app|
     user app['owner']
     group app['group']
     deploy_to app['deploy_to']
-    environment 'RAILS_ENV' => node.app_environment, 'MONGODB_URI' => app['mongodb_uri']
+    environment 'GEM_HOME' => node[:languages][:ruby][:gems_dir], 'RAILS_ENV' => node.app_environment, 'MONGODB_URI' => app['mongodb_uri']
     action app['force'][node.app_environment] ? :force_deploy : :deploy
 
     before_migrate do

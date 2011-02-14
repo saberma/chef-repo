@@ -2,17 +2,20 @@
   "id": "shopqi",
   "repository": "git://github.com/saberma/shopqi.git",
   "revision": {
-    "production": "HEAD"
+    "production": "HEAD",
+    "staging": "HEAD"
   },
   "deploy_to": "/srv/shopqi",
   "mongodb_uri": "mongodb://localhost:27092",
   "owner": "deploy",
   "group": "deploy",
   "migrate": {
-    "production": true
+    "production": true,
+    "staging": true
   },
   "force": {
-    "production": true
+    "production": true,
+    "staging": true
   },
   "packages": {
   },

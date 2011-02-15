@@ -3,7 +3,7 @@ upstream <%= "#{@name}_app_server" %> {
 }
 
 server {
-  listen   80;
+  listen   <%= @port %>;
   server_name  <%= node[:hostname] %>;
 
   access_log  <%= node[:nginx][:log_dir] %>/localhost.access.log;

@@ -61,13 +61,14 @@ end
 
 search(:apps) do |app|
   name = app[:id]
+  port = (node.app_environment.to_sym == :production) ? 80 : 3000
 
   template "#{node[:nginx][:dir]}/sites-available/#{name}" do
     source "unicorn-site.erb"
     owner "root"
     group "root"
     mode 0644
-    variables :name => name, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/srv/#{name}"
+    variables :name => name, :port => port, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/srv/#{name}"
   end
 
   nginx_site name do

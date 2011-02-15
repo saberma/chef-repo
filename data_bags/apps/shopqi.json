@@ -15,7 +15,7 @@
   },
   "force": {
     "production": true,
-    "staging": true
+    "staging": false
   },
   "packages": {
     "libmagickcore-dev": "",

@@ -69,6 +69,7 @@ search(:apps) do |app|
     group "root"
     mode 0644
     variables :name => name, :port => port, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/srv/#{name}"
+    notifies :reload, resources(:service => "nginx")
   end
 
   nginx_site name do

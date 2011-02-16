@@ -55,7 +55,7 @@ search(:apps) do |app|
     recursive true
   end
 
-  %w{ log pids system vendor_bundle }.each do |dir|
+  %w{ log pids system config vendor_bundle }.each do |dir|
 
     directory "#{app['deploy_to']}/shared/#{dir}" do
       owner app['owner']
@@ -76,7 +76,7 @@ search(:apps) do |app|
     environment 'RAILS_ENV' => node.app_environment, 'MONGODB_URI' => app['mongodb_uri']
     action app['force'][node.app_environment] ? :force_deploy : :deploy
 
-    symlink_before_migrate {"vendor_bundle" => "vendor/bundle"}
+    symlink_before_migrate({"vendor_bundle" => "vendor/bundle", "config/payment.rb" => "config/initializers/payment.rb"})
 
     before_migrate do
       execute "git submodule update --init" do

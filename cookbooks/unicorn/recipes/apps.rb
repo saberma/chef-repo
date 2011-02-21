@@ -17,7 +17,7 @@ search(:apps) do |app|
     :worker_bind_base_port => "37#{counter}01",
     :debug => false,
     :binary_path => "#{node[:languages][:ruby][:ruby_bin]} #{node[:languages][:ruby][:gems_dir]}/bin/unicorn_rails",
-    :env => 'production',
+    :env => node.app_environment,
     :app_root => app_root,
     :enable => true,
     :config_path => "#{app_root}/current/config/unicorn.conf.rb",

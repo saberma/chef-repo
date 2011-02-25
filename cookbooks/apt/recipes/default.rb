@@ -16,6 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+cookbook_file "/etc/apt/sources.list" do
+  owner "root"
+  group "root"
+  mode 0644
+end
 
 e = execute "apt-get update" do
   action :nothing

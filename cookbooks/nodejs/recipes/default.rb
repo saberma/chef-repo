@@ -53,17 +53,19 @@ bash "compile_nodejs_source" do
   creates "#{node[:redis][:dir]}/bin/node"
 end
 
-search(:apps, 'need_nodejs:true') do |app|
-  juggernaut_path = "#{app[:deploy_to]}/current/vendor/others/juggernaut"
-  execute "git submodule update --init" do
-    ignore_failure true
-    cwd juggernaut_path
-    only_if { File.exists?(juggernaut_path) }
-  end
+unless node[:instance_role]
+  search(:apps, 'need_nodejs:true') do |app|
+    juggernaut_path = "#{app[:deploy_to]}/current/vendor/others/juggernaut"
+    execute "git submodule update --init" do
+      ignore_failure true
+      cwd juggernaut_path
+      only_if { File.exists?(juggernaut_path) }
+    end
 
-  runit_service "nodejs-server" do
-    template_name "nodejs"
-    options :app_root => app[:deploy_to], :binary_path => "#{node[:nodejs][:dir]}/bin/node"
-    cookbook "nodejs"
+    runit_service "nodejs-server" do
+      template_name "nodejs"
+      options :app_root => app[:deploy_to], :binary_path => "#{node[:nodejs][:dir]}/bin/node"
+      cookbook "nodejs"
+    end
   end
 end

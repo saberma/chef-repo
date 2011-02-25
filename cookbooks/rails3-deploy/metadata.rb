@@ -1,6 +1,7 @@
-maintainer       "YOUR_COMPANY_NAME"
-maintainer_email "YOUR_EMAIL"
-license          "All rights reserved"
-description      "Installs/Configures rails3-deploy"
+maintainer       "ShopQi, Inc."
+maintainer_email "mahb45@gmail.com"
+license          "Apache 2.0"
+description      "deploy rails3 app"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
+recipe "users::sysadmin", "searches users data bag for sysadmins and creates users"
 version          "0.0.1"

@@ -22,11 +22,9 @@ cookbook_file "/etc/apt/sources.list" do
   mode 0644
 end
 
-e = execute "apt-get update" do
-  action :nothing
+execute "apt-get update" do
+  action :run
 end
-
-e.run_action(:run)
 
 %w{/var/cache/local /var/cache/local/preseeding}.each do |dirname|
   directory dirname do

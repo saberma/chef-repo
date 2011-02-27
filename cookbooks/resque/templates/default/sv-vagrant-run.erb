@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+cd /vagrant
+exec rake resque:work QUEUE=* INTERVAL=1 2>&1

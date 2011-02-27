@@ -57,23 +57,3 @@ end
 template "/etc/redis.conf" do
   notifies :restart, resources(:service => "redis-server")
 end
-
-bash "compile_redis_source" do
-  cwd "/tmp"
-  code <<-EOH
-    tar zxf redis-#{redis_version}.tar.gz
-    cd antirez-redis-*
-    make
-    cp -r src/* #{node[:redis][:dir]}
-  EOH
-  creates "#{node[:redis][:dir]}/redis-server"
-end
-
-runit_service "redis-server" do
-  template_name "redis"
-  cookbook "redis"
-end
-
-template "/etc/redis.conf" do
-  notifies :restart, resources(:service => "redis-server")
-end

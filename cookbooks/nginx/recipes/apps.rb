@@ -17,44 +17,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+search(:apps) do |app|
+  name = app[:id]
+  port = (node.app_environment.to_sym == :production) ? 80 : 3000
 
-package "nginx"
-
-directory node[:nginx][:log_dir] do
-  mode 0755
-  owner node[:nginx][:user]
-  action :create
-end
-
-%w{nxensite nxdissite}.each do |nxscript|
-  template "/usr/sbin/#{nxscript}" do
-    source "#{nxscript}.erb"
-    mode 0755
+  template "#{node[:nginx][:dir]}/sites-available/#{name}" do
+    source "unicorn-site.erb"
     owner "root"
     group "root"
+    mode 0644
+    variables :name => name, :port => port, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/srv/#{name}"
+    notifies :reload, resources(:service => "nginx")
   end
-end
 
-template "nginx.conf" do
-  path "#{node[:nginx][:dir]}/nginx.conf"
-  source "nginx.conf.erb"
-  owner "root"
-  group "root"
-  mode 0644
-end
-
-template "#{node[:nginx][:dir]}/sites-available/default" do
-  source "default-site.erb"
-  owner "root"
-  group "root"
-  mode 0644
-end
-
-service "nginx" do
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
-end
-
-nginx_site "default" do
-  enable false
+  nginx_site name do
+    enable true
+  end
 end

@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+cd /vagrant
+exec <%= @binary_path %> -E <%= @env %> -c <%= @config_path %> <%= "-d" if @debug %> 2>&1

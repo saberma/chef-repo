@@ -33,8 +33,8 @@ remote_file "/tmp/redis-#{redis_version}.tar.gz" do
 end
 
 directory node[:redis][:dir] do
-  owner "app"
-  group "app"
+  owner "www-data"
+  group "www-data"
   mode "0755"
 end
 

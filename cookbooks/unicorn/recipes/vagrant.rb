@@ -1,8 +1,18 @@
 require_recipe "resque"
 
-name = app[:id]
+gem_package 'bundler' do
+  action :install
+end
 
 app_root = "/vagrant"
+
+["git submodule update", "bundle install", "rake db:seed", "rake db:migrate"].each do |cmd|
+  execute cmd do
+    ignore_failure true
+    cwd app_root
+  end
+end
+
 config = Mash.new({
   :pid_path => "/tmp/unicorn.pid",
   :worker_count => 2,
@@ -23,8 +33,6 @@ config = Mash.new({
 })
 
 template config[:config_path] do
-  owner 'app'
-  group 'app'
   mode '644'
   source "unicorn.conf.erb"
   variables config

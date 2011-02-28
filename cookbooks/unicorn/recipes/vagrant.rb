@@ -50,7 +50,3 @@ runit_service "unicorn-vagrant" do
   cookbook "unicorn"
   options config
 end
-
-service "unicorn-vagrant" do
-  action [:enable, :start]
-end

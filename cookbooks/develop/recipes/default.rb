@@ -20,9 +20,9 @@
 require_recipe "rvm::default"
 require_recipe "rvm::ruby_192"
 
+require_recipe "redis::source"
 require_recipe "mongodb::default"
-require_recipe "nodejs::vagrant"
 require_recipe "unicorn::vagrant"
 require_recipe "nginx::vagrant"
-require_recipe "redis::source"
 require_recipe "resque::vagrant"
+require_recipe "nodejs::vagrant"

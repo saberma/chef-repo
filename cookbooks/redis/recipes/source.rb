@@ -30,6 +30,7 @@ redis_version = node[:redis][:version]
 remote_file "/tmp/redis-#{redis_version}.tar.gz" do
   source "https://github.com/antirez/redis/tarball/#{redis_version}"
   action :create_if_missing
+  not_if { File.exists?("#{node[:redis][:dir]}/redis-server") }
 end
 
 directory node[:redis][:dir] do
@@ -44,7 +45,7 @@ bash "compile_redis_source" do
     tar zxf redis-#{redis_version}.tar.gz
     cd antirez-redis-*
     make
-    cp -r src #{node[:redis][:dir]}
+    cp -r src/* #{node[:redis][:dir]}
   EOH
   creates "#{node[:redis][:dir]}/redis-server"
 end

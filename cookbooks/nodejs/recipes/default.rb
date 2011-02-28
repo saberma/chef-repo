@@ -32,6 +32,7 @@ nodejs_version = node[:nodejs][:version]
 remote_file "/tmp/nodejs-#{nodejs_version}.tar.gz" do
   source "http://nodejs.org/dist/node-v#{nodejs_version}.tar.gz"
   action :create_if_missing
+  not_if { File.exists?("#{node[:nodejs][:dir]}/bin/node") }
 end
 
 directory node[:nodejs][:dir] do

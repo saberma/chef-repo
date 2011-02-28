@@ -20,14 +20,14 @@
 include_recipe "nodejs"
 
 app_root = "/vagrant"
-juggernaut_path = "#{app_root}/current/vendor/others/juggernaut"
+juggernaut_path = "#{app_root}/vendor/others/juggernaut"
 execute "git submodule update --init" do
   cwd juggernaut_path
   only_if { File.exists?(juggernaut_path) }
 end
 
 runit_service "nodejs-server" do
-  template_name "nodejs"
+  template_name "vagrant"
   options :app_root => app_root, :binary_path => "#{node[:nodejs][:dir]}/bin/node"
   cookbook "nodejs"
 end

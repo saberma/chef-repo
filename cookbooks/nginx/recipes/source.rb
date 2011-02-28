@@ -42,6 +42,7 @@ node.set[:nginx][:daemon_disable] = true
 remote_file "/tmp/nginx-#{nginx_version}.tar.gz" do
   source "http://sysoev.ru/nginx/nginx-#{nginx_version}.tar.gz"
   action :create_if_missing
+  not_if { File.exists?(node[:nginx][:src_binary]) }
 end
 
 bash "compile_nginx_source" do

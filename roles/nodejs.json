@@ -8,6 +8,6 @@
   },
   "chef_type": "role",
   "run_list": [
-    "nodejs::default"
+    "nodejs::apps"
   ]
 }

@@ -1,5 +1,12 @@
 require_recipe "resque"
 
+#for rmagick
+["imagemagick", "libmagickcore-dev", "libmagickwand-dev"].each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
 gem_package 'bundler' do
   action :install
 end
@@ -8,7 +15,7 @@ app_root = "/vagrant"
 
 ["git submodule update", "bundle install", "rake db:seed", "rake db:migrate"].each do |cmd|
   execute cmd do
-    ignore_failure true
+    #ignore_failure true
     cwd app_root
   end
 end

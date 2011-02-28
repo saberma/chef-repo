@@ -48,6 +48,23 @@ template "/etc/init.d/mongodb" do
   backup false
 end
 
+#https://gist.github.com/801739
+bash "repair mongodb after a crash" do
+  environment "HOME"=>"/root" 
+
+  lock_file = File.join(node[:mongodb][:datadir],'mongod.lock')
+
+  code <<-EOH
+    set -e
+    rm #{lock_file}
+    sudo -u mongodb #{node[:mongodb][:dir]}/bin/mongod --dbpath=#{node[:mongodb][:datadir]} --repair
+    /etc/init.d/mongodb start
+  EOH
+
+  not_if { `ps -A -o command | grep "[m]ongo"`.include? node[:mongodb][:version] }
+  only_if { ::FileTest.exists?(lock_file) }
+end
+
 service "mongodb" do
   supports :start => true, :stop => true, "force-stop" => true, :restart => true, "force-reload" => true, :status => true
   action [:enable, :start]

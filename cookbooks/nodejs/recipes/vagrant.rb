@@ -1,8 +1,9 @@
 #
-# Cookbook Name:: develop
+# Author:: Marius Ducea (marius@promethost.com)
+# Cookbook Name:: nodejs
 # Recipe:: default
 #
-# Copyright 2011, ShopQi, Inc.
+# Copyright 2010, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,13 +17,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+include_recipe "nodejs"
 
-require_recipe "rvm::default"
-require_recipe "rvm::ruby_192"
+app_root = "/vagrant"
+juggernaut_path = "#{app_root}/current/vendor/others/juggernaut"
+execute "git submodule update --init" do
+  cwd juggernaut_path
+  only_if { File.exists?(juggernaut_path) }
+end
 
-require_recipe "mongodb::default"
-require_recipe "nodejs::vagrant"
-require_recipe "unicorn::vagrant"
-require_recipe "nginx::vagrant"
-require_recipe "redis::source"
-require_recipe "resque::vagrant"
+runit_service "nodejs-server" do
+  template_name "nodejs"
+  options :app_root => app_root, :binary_path => "#{node[:nodejs][:dir]}/bin/node"
+  cookbook "nodejs"
+end

@@ -36,7 +36,7 @@ config = Mash.new({
   :env => :development,
   :app_root => app_root,
   :enable => true,
-  :config_path => "/tmp/unicorn.conf.rb",
+  :config_path => "#{app_root}/config/unicorn.conf.rb",
 })
 
 template config[:config_path] do

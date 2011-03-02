@@ -13,7 +13,9 @@ end
 
 app_root = "/vagrant"
 
-["git submodule update --init", "bundle install", "rake db:migrate"].each do |cmd|
+#install gems in vendor/bundle
+#http://gembundler.com/deploying.html
+["git submodule update --init", "bundle install --deployment", "rake db:migrate"].each do |cmd|
   execute cmd do
     #ignore_failure true
     cwd app_root

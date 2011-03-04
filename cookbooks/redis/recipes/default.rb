@@ -1,5 +1,6 @@
 package "redis-server" do
   version node[:redis][:version]
+  options '--force-yes'
 end
 
 service "redis-server" do

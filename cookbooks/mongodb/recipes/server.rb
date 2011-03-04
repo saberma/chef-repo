@@ -52,7 +52,7 @@ end
 bash "repair mongodb after a crash" do
   environment "HOME"=>"/root" 
 
-  lock_file = File.join(node[:mongodb][:datadir],'mongod.lock')
+  lock_file = ::File.join(node[:mongodb][:datadir],'mongod.lock')
 
   code <<-EOH
     set -e

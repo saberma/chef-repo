@@ -18,7 +18,10 @@
 # limitations under the License.
 #
 
-package "nginx"
+package "nginx" do
+  action :install
+  options '--force-yes'
+end
 
 directory node[:nginx][:log_dir] do
   mode 0755

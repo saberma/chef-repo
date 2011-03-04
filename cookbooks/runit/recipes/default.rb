@@ -11,5 +11,6 @@ end
   
 package "runit" do
   action :install
+  options '--force-yes'
   notifies :run, resources(:execute => "start-runsvdir")
 end

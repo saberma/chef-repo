@@ -3,6 +3,7 @@ require_recipe "unicorn"
 #for rmagick
 ["imagemagick", "libmagickcore-dev", "libmagickwand-dev"].each do |pkg|
   package pkg do
+    options '--force-yes'
     action :install
   end
 end

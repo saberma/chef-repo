@@ -24,7 +24,9 @@ case node[:platform]
   when "centos","redhat","fedora"
     package "openssl-devel"
   when "debian","ubuntu"
-    package "libssl-dev"
+    package "libssl-dev" do
+      options '--force-yes'
+    end
 end
 
 nodejs_version = node[:nodejs][:version]

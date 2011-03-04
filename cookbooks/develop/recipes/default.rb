@@ -17,8 +17,9 @@
 # limitations under the License.
 #
 
-require_recipe "rvm::default"
-require_recipe "rvm::ruby_192"
+#use ruby1.9.2 without rvm, speed up
+#require_recipe "rvm::default"
+#require_recipe "rvm::ruby_192"
 
 require_recipe "redis::source"
 require_recipe "mongodb::default"

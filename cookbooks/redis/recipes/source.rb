@@ -30,7 +30,7 @@ redis_version = node[:redis][:version]
 remote_file "/tmp/redis-#{redis_version}.tar.gz" do
   source "https://github.com/antirez/redis/tarball/#{redis_version}"
   action :create_if_missing
-  not_if { File.exists?("#{node[:redis][:dir]}/redis-server") }
+  not_if { ::FileTest.exists?("#{node[:redis][:dir]}/redis-server") }
 end
 
 directory node[:redis][:dir] do

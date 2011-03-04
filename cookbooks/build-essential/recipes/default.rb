@@ -22,6 +22,7 @@ when "ubuntu","debian"
   %w{build-essential binutils-doc}.each do |pkg|
     package pkg do
       action :install
+      options '--force-yes'
     end
   end
 when "centos"
@@ -30,14 +31,9 @@ when "centos"
   end
 end
 
-package "autoconf" do
-  action :install
-end
-
-package "flex" do
-  action :install
-end
-
-package "bison" do
-  action :install
+%w{autoconf flex bison git-core}.each do |pkg|
+  package pkg do
+    action :install
+    options '--force-yes'
+  end
 end

@@ -15,8 +15,8 @@ end
 app_root = "/vagrant"
 
 #install gems in vendor/bundle
-#http://gembundler.com/deploying.html
-["git submodule update --init", "bundle install --deployment"].each do |cmd|
+#http://gembundler.com/bundle_install.html
+["git submodule update --init", "bundle install --path vendor/bundle"].each do |cmd|
   execute cmd do
     #ignore_failure true
     cwd app_root

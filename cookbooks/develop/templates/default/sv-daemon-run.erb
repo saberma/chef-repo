@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1
+export HOME=/home/vagrant
+export GEM_HOME=<%= node[:languages][:ruby][:gems_dir] %>
+cd /vagrant
+exec <%= node[:languages][:ruby][:gems_dir] %>/bin/bundle exec livereload 2>&1

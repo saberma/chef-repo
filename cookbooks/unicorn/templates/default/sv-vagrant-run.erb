@@ -1,5 +1,6 @@
 #!/bin/sh
 exec 2>&1
+export HOME=/home/vagrant
 #fixed error:Could not find RubyGem unicorn
 export GEM_HOME=<%= node[:languages][:ruby][:gems_dir] %>
 cd /vagrant

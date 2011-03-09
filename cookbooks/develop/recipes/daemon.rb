@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: develop
-# Recipe:: default
+# Recipe:: daemon
 #
 # Copyright 2011, ShopQi, Inc.
 #
@@ -16,15 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-require_recipe "rvm::default"
-require_recipe "rvm::ruby_192"
-
-require_recipe "redis::source"
-require_recipe "mongodb::default"
-require_recipe "unicorn::vagrant"
-require_recipe "nginx::vagrant"
-require_recipe "resque::vagrant"
-require_recipe "nodejs::vagrant"
-
-require_recipe "develop::daemon"
+runit_service "develop-daemon" do
+  template_name "daemon"
+  cookbook "develop"
+end

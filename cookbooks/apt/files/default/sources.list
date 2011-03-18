@@ -1,10 +1,13 @@
-deb http://tw.archive.ubuntu.com/ubuntu lucid main restricted universe multiverse
-deb http://tw.archive.ubuntu.com/ubuntu lucid-security main restricted universe multiverse
-deb http://tw.archive.ubuntu.com/ubuntu lucid-updates main restricted universe multiverse
-deb http://tw.archive.ubuntu.com/ubuntu lucid-backports main restricted universe multiverse
-deb http://tw.archive.ubuntu.com/ubuntu lucid-proposed main restricted universe multiverse
-deb-src http://tw.archive.ubuntu.com/ubuntu lucid main restricted universe multiverse
-deb-src http://tw.archive.ubuntu.com/ubuntu lucid-security main restricted universe multiverse
-deb-src http://tw.archive.ubuntu.com/ubuntu lucid-updates main restricted universe multiverse
-deb-src http://tw.archive.ubuntu.com/ubuntu lucid-backports main restricted universe multiverse
-deb-src http://tw.archive.ubuntu.com/ubuntu lucid-proposed main restricted universe multiverse
+#This file was generated automatically at 2011-03-14 4:19:08.
+#Please visit http://ubuntu9.com for more infomation.
+
+deb http://www.geekbone.org/ubuntu lucid main restricted universe multiverse
+deb-src http://www.geekbone.org/ubuntu lucid main restricted universe multiverse
+deb http://www.geekbone.org/ubuntu lucid-security main restricted universe multiverse
+deb-src http://www.geekbone.org/ubuntu lucid-security main restricted universe multiverse
+deb http://www.geekbone.org/ubuntu lucid-updates main restricted universe multiverse
+deb-src http://www.geekbone.org/ubuntu lucid-updates main restricted universe multiverse
+deb http://www.geekbone.org/ubuntu lucid-proposed main restricted universe multiverse
+deb-src http://www.geekbone.org/ubuntu lucid-proposed main restricted universe multiverse
+deb http://www.geekbone.org/ubuntu lucid-backports main restricted universe multiverse
+deb-src http://www.geekbone.org/ubuntu lucid-backports main restricted universe multiverse

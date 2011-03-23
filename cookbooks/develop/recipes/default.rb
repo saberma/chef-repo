@@ -27,4 +27,4 @@ require_recipe "nginx::vagrant"
 require_recipe "resque::vagrant"
 require_recipe "nodejs::vagrant"
 
-require_recipe "develop::daemon"
+#require_recipe "develop::daemon"

@@ -55,3 +55,7 @@ bash "compile_nodejs_source" do
   EOH
   creates "#{node[:nodejs][:dir]}/bin/node"
 end
+  
+link "/usr/local/bin/node" do
+  to "#{node[:nodejs][:dir]}/bin/node"
+end

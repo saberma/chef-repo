@@ -16,6 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# tar zcf ~/Dropbox/Public/shopqi/chef-solo.tar.gz ./cookbooks
 
 require_recipe "rvm::default"
 require_recipe "rvm::ruby_192"
@@ -28,3 +29,4 @@ require_recipe "resque::vagrant"
 require_recipe "nodejs::vagrant"
 
 #require_recipe "develop::daemon"
+

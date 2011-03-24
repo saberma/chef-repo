@@ -19,6 +19,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+package 'nginx' do
+  action :remove
+end
 
 include_recipe "build-essential"
 
@@ -42,12 +45,17 @@ node.set[:nginx][:daemon_disable] = true
 remote_file "/tmp/nginx-#{nginx_version}.tar.gz" do
   source "http://sysoev.ru/nginx/nginx-#{nginx_version}.tar.gz"
   action :create_if_missing
-  not_if { File.exists?(node[:nginx][:src_binary]) }
+  not_if "#{node[:nginx][:src_binary]} | grep '=> #{nginx_version}'"
 end
 
 bash "compile_nginx_source" do
   cwd "/tmp"
   code <<-EOH
+    git clone git://github.com/mdirolf/nginx-gridfs.git
+    cd nginx-gridfs
+    git submodule update --init
+    cd -
+
     tar zxf nginx-#{nginx_version}.tar.gz
     cd nginx-#{nginx_version} && ./configure #{configure_flags}
     make && make install

@@ -18,6 +18,7 @@
 # limitations under the License.
 #
 
+package "curl"
 include_recipe "nodejs"
 
 bash "install npm - package manager for node" do
@@ -26,8 +27,7 @@ bash "install npm - package manager for node" do
   code <<-EOH
     mkdir -p npm-v#{node[:nodejs][:npm]} && \
     cd npm-v#{node[:nodejs][:npm]}
-    curl -L http://github.com/isaacs/npm/tarball/v#{node[:nodejs][:npm]} | tar xzf - --strip-components=1 && \
-    make uninstall install
+    curl http://npmjs.org/install.sh | npm_install=#{node[:nodejs][:npm]} sh
   EOH
   not_if {File.exists?("/usr/local/bin/npm@#{node[:nodejs][:npm]}")}
 end

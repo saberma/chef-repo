@@ -51,4 +51,10 @@ server {
   location = /500.html {
     root   <%= @app_root %>/public;
   }
+
+  #gridfs
+  location = /gridfs/ {
+    gridfs shopqi;
+    mongo 127.0.0.1:27092;
+  }
 }

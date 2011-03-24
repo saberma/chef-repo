@@ -1,25 +1,18 @@
-default[:nginx][:version]      = "0.7.67"
+default[:nginx][:version]      = "0.9.6"
 default[:nginx][:install_path] = "/opt/nginx-#{nginx[:version]}"
 default[:nginx][:src_binary]   = "#{nginx[:install_path]}/sbin/nginx"
 
-case platform
-when "debian","ubuntu"
-  set[:nginx][:dir]     = "/etc/nginx"
-  set[:nginx][:log_dir] = "/var/log/nginx"
-  set[:nginx][:user]    = "www-data"
-  set[:nginx][:binary]  = "/usr/sbin/nginx"
-else
-  set[:nginx][:dir]     = "/etc/nginx"
-  set[:nginx][:log_dir] = "/var/log/nginx"
-  set[:nginx][:user]    = "www-data"
-  set[:nginx][:binary]  = "/usr/sbin/nginx"
-end
+default[:nginx][:dir]     = "/etc/nginx"
+default[:nginx][:log_dir] = "/var/log/nginx"
+default[:nginx][:user]    = "www-data"
+default[:nginx][:binary]  = "/usr/sbin/nginx"
 
 default[:nginx][:configure_flags] = [
   "--prefix=#{nginx[:install_path]}",
   "--conf-path=#{nginx[:dir]}/nginx.conf",
   "--with-http_ssl_module",
-  "--with-http_gzip_static_module"
+  "--with-http_gzip_static_module",
+  "--add-module=/tmp/nginx-gridfs"
 ]
 
 default[:nginx][:gzip] = "on"

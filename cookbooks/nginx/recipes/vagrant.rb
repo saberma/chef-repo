@@ -27,7 +27,8 @@ template "#{node[:nginx][:dir]}/sites-available/#{name}" do
   group "root"
   mode 0644
   variables :name => name, :port => 3000, :socket_path => "/tmp/unicorn-#{name}.sock", :app_root => "/#{name}"
-  notifies :reload, resources(:service => "nginx")
+  notifies :restart, resources(:service => "nginx")
+  #notifies :reload, resources(:service => "nginx")
 end
 
 nginx_site name do

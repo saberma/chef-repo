@@ -1,0 +1,24 @@
+{
+  "id": "sgj",
+  "repository": "git://github.com/saberma/sgj.git",
+  "revision": {
+    "production": "HEAD"
+  },
+  "deploy_to": "/srv/sgj",
+  "owner": "deploy",
+  "group": "deploy",
+  "migrate": {
+    "production": false
+  },
+  "force": {
+    "production": true
+  },
+  "packages": {
+    "libmagickcore-dev": "",
+    "libmagickwand-dev": "",
+    "imagemagick": ""
+  },
+  "gems": {
+    "bundler": ""
+  }
+}

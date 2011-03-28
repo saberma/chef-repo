@@ -73,10 +73,12 @@ search(:apps) do |app|
     user app['owner']
     group app['group']
     deploy_to app['deploy_to']
-    environment 'RAILS_ENV' => node.app_environment, 'MONGODB_URI' => app['mongodb_uri']
+    environment 'RAILS_ENV' => node.app_environment, 'RACK_ENV' => node.app_environment, 'MONGODB_URI' => app['mongodb_uri']
     action app['force'][node.app_environment] ? :force_deploy : :deploy
 
-    symlink_before_migrate({"vendor_bundle" => "vendor/bundle", "config/payment.rb" => "config/initializers/payment.rb"})
+    links = {"vendor_bundle" => "vendor/bundle"}
+    links["config/payment.rb"] = "config/initializers/payment.rb" if File.exists?("#{app['deploy_to']}/shared/config/payment.rb")
+    symlink_before_migrate(links)
 
     before_migrate do
       execute "git submodule update --init" do

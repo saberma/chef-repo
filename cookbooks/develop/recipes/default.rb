@@ -21,6 +21,8 @@
 require_recipe "rvm::default"
 require_recipe "rvm::ruby_192"
 
+require_recipe "graphicsmagick"
+
 require_recipe "redis::source"
 require_recipe "mongodb::default"
 require_recipe "unicorn::vagrant"

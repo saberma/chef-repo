@@ -21,6 +21,7 @@
 #
 package 'nginx' do
   action :remove
+  ignore_failure true 
 end
 
 include_recipe "build-essential"

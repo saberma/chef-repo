@@ -11,9 +11,9 @@ include_recipe "build-essential"
 gm_version = node[:gm][:version]
 
 remote_file "/tmp/GraphicsMagick-#{gm_version}.tar.gz" do
-  source "http://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/#{gm_version}/GraphicsMagick-#{gm_version}.tar.gz/download"
+  source "http://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/#{gm_version}/GraphicsMagick-#{gm_version}.tar.gz"
   action :create_if_missing
-  not_if "#{node[:gm][:src_binary]}"
+  not_if { File.exists?("#{node[:gm][:binary]}") }
 end
 
 bash "compile_gm_source" do

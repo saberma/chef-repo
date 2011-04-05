@@ -1,13 +1,14 @@
 #This file was generated automatically at 2011-03-14 4:19:08.
 #Please visit http://ubuntu9.com for more infomation.
 
-deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid main restricted universe multiverse
-deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid main restricted universe multiverse
-deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-updates main restricted universe multiverse
-deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-updates main restricted universe multiverse
-deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-backports main restricted universe multiverse
-deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-backports main restricted universe multiverse
-deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-security main restricted universe multiverse
-deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-security main restricted universe multiverse
-deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-proposed main multiverse restricted universe
-deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ lucid-proposed main restricted universe multiverse
+#not the fast, but fixed error
+deb http://ubuntu.dormforce.net/ubuntu/ lucid main multiverse restricted universe
+deb http://ubuntu.dormforce.net/ubuntu/ lucid-backports main multiverse restricted universe
+deb http://ubuntu.dormforce.net/ubuntu/ lucid-proposed main multiverse restricted universe
+deb http://ubuntu.dormforce.net/ubuntu/ lucid-security main multiverse restricted universe
+deb http://ubuntu.dormforce.net/ubuntu/ lucid-updates main multiverse restricted universe
+deb-src http://ubuntu.dormforce.net/ubuntu/ lucid main multiverse restricted universe
+deb-src http://ubuntu.dormforce.net/ubuntu/ lucid-backports main multiverse restricted universe
+deb-src http://ubuntu.dormforce.net/ubuntu/ lucid-proposed main multiverse restricted universe
+deb-src http://ubuntu.dormforce.net/ubuntu/ lucid-security main multiverse restricted universe
+deb-src http://ubuntu.dormforce.net/ubuntu/ lucid-updates main multiverse restricted universe

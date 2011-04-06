@@ -32,3 +32,7 @@ require_recipe "nodejs::vagrant"
 
 #require_recipe "develop::daemon"
 
+#nginx alwasy need to restart at the end.
+service "nginx" do
+  action :restart
+end

@@ -1,4 +1,4 @@
-default.resque[:version] = "1.10.0"
+default.resque[:version] = "1.15.0"
 default.resque[:worker] = {
   :count => 1,
   :env_vars => "production",

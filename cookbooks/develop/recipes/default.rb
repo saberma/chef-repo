@@ -21,18 +21,9 @@
 require_recipe "rvm::default"
 require_recipe "rvm::ruby_192"
 
-require_recipe "graphicsmagick"
-
-require_recipe "redis::source"
-##require_recipe "mongodb::default"
+#fixed(ruby-debug19 need): `mkdir': Permission denied
+gem_package 'linecache19'
+require_recipe "postgresql::server"
 require_recipe "unicorn::vagrant"
-##require_recipe "nginx::vagrant"
 require_recipe "resque::vagrant"
-##require_recipe "nodejs::vagrant"
-#
-##require_recipe "develop::daemon"
-
-#nginx alwasy need to restart at the end.
-#service "nginx" do
-#  action :restart
-#end
+#require_recipe "develop::daemon"

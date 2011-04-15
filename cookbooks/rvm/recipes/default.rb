@@ -16,7 +16,10 @@ end
  
 bash "installing system-wide RVM stable" do
   user "root"
-  code "bash < <( curl -L https://rvm.beginrescueend.com/install/rvm )"
+  code <<-EOF
+    bash < <( curl -L https://rvm.beginrescueend.com/install/rvm )"
+    echo 'source /usr/local/rvm/scripts/rvm' >> /etc/profile
+  EOF
   not_if "which rvm"
 end
 

@@ -1,3 +1,6 @@
+#pg gem need it
+package "libpq-dev"
+
 require_recipe "unicorn"
 
 #for rmagick, optipng for css_sprite gem.

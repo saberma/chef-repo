@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: apt
-# Recipe:: default
+# Cookbook Name:: postgresql
+# Recipe:: client
 #
-# Copyright 2008-2009, Opscode, Inc.
+# Copyright 2009, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,21 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-cookbook_file "/etc/apt/sources.list" do
-  owner "root"
-  group "root"
-  mode 0644
-end
 
-execute "apt-get update" do
-  action :run
+case node.platform
+when "ubuntu","debian"
+  package "postgresql-client"
+when "fedora","suse"
+  package "postgresql-devel"
+when "redhat","centos"
+  package "postgresql#{node.postgresql.version.split('.').join}-devel"
 end
-
-#%w{/var/cache/local /var/cache/local/preseeding}.each do |dirname|
-#  directory dirname do
-#    owner "root"
-#    group "root"
-#    mode  0755
-#    action :create
-#  end
-#end

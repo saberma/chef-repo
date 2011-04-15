@@ -1,12 +1,12 @@
 require_recipe "unicorn"
 
 #for rmagick, optipng for css_sprite gem.
-["imagemagick", "libmagickcore-dev", "libmagickwand-dev", "optipng"].each do |pkg|
-  package pkg do
-    options '--force-yes'
-    action :install
-  end
-end
+#["imagemagick", "libmagickcore-dev", "libmagickwand-dev", "optipng"].each do |pkg|
+#  package pkg do
+#    options '--force-yes'
+#    action :install
+#  end
+#end
 
 gem_package 'bundler' do
   action :install
@@ -25,7 +25,7 @@ end
 
 config = Mash.new({
   :pid_path => "/tmp/unicorn.pid",
-  :worker_count => 2,
+  :worker_count => 1,
   :time_out => node[:unicorn][:timeout],
   :socket_path => "/tmp/unicorn-vagrant.sock",
   :backlog_limit => 1,

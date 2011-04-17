@@ -84,3 +84,15 @@ bash "init postgresql data" do
   EOH
   only_if { Dir.glob("#{data_dir}/*").empty? }
 end
+
+#只安装客户端的步骤
+#http://www.postgresql.org/docs/9.0/static/install-procedure.html [Client-only installation]
+#wget ftp://ftp2.cn.postgresql.org/postgresql/source/v9.0.3/postgresql-9.0.3.tar.bz2 
+#tar xjf postgresql-9.0.3.tar.bz2
+#d postgresql-9.0.3
+#./configure
+#make
+#make -C src/bin install
+#make -C src/include install
+#make -C src/interfaces install
+#make -C doc install

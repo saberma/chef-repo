@@ -23,7 +23,8 @@ require_recipe "rvm::ruby_192"
 
 #fixed(ruby-debug19 need): `mkdir': Permission denied
 gem_package 'linecache19'
-require_recipe "postgresql::server"
+
+require_recipe "postgresql::default"
 require_recipe "unicorn::vagrant"
 require_recipe "resque::vagrant"
 #require_recipe "develop::daemon"

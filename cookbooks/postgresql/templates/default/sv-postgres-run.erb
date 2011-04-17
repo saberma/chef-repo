@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec chpst -u postgres /usr/local/pgsql/bin/postgres -D <%=@config_dir%> 2>&1

@@ -16,53 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-case platform
-when "debian"
+default[:postgresql][:version] = "9.0.3"
+default[:postgresql][:config_dir] = "/etc/postgresql/#{node[:postgresql][:version]}/main"
 
-  if platform_version.to_f == 5.0
-    default[:postgresql][:version] = "8.3"
-  elsif platform_version =~ /.*sid/
-    default[:postgresql][:version] = "8.4"
-  end
-
-  set[:postgresql][:dir] = "/etc/postgresql/#{node[:postgresql][:version]}/main"
-
-when "ubuntu"
-
-  if platform_version.to_f <= 9.04
-    default[:postgresql][:version] = "8.3"
-  else
-    default[:postgresql][:version] = "8.4"
-  end
-
-  set[:postgresql][:dir] = "/etc/postgresql/#{node[:postgresql][:version]}/main"
-
-when "fedora"
-
-  if platform_version.to_f <= 12
-    default[:postgresql][:version] = "8.3"
-  else
-    default[:postgresql][:version] = "8.4"
-  end
-
-  set[:postgresql][:dir] = "/var/lib/pgsql/data"
-
-when "redhat","centos"
-
-  default[:postgresql][:version] = "8.4"
-  set[:postgresql][:dir] = "/var/lib/pgsql/data"
-
-when "suse"
-
-  if platform_version.to_f <= 11.1
-    default[:postgresql][:version] = "8.3"
-  else
-    default[:postgresql][:version] = "8.4"
-  end
-
-  set[:postgresql][:dir] = "/var/lib/pgsql/data"
-
-else
-  default[:postgresql][:version] = "8.4"
-  set[:postgresql][:dir]            = "/etc/postgresql/#{node[:postgresql][:version]}/main"
-end
+default[:postgresql][:data_dir] = "/var/lib/postgresql/#{node[:postgresql][:version]}/main"
+default[:postgresql][:sock_dir] = "/var/run/postgresql"
+default[:postgresql][:bin_dir] = "/usr/local/pgsql/bin"
+default[:postgresql][:binary] = "#{node[:postgresql][:bin_dir]}/psql"

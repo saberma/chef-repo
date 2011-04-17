@@ -22,9 +22,9 @@ cookbook_file "/etc/apt/sources.list" do
   mode 0644
 end
 
-execute "apt-get update" do
-  action :run
-end
+#execute "apt-get update" do
+#  action :run
+#end
 
 #%w{/var/cache/local /var/cache/local/preseeding}.each do |dirname|
 #  directory dirname do

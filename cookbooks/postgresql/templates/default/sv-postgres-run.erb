@@ -1,3 +1,5 @@
 #!/bin/sh
 exec 2>&1
+mkdir -p <%=@sock_dir%>
+chown postgres <%=@sock_dir%>
 exec chpst -u postgres /usr/local/pgsql/bin/postgres -D <%=@config_dir%> 2>&1

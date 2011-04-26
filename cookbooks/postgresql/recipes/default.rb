@@ -41,7 +41,7 @@ end
 
 user "postgres"
 
-[config_dir, data_dir, sock_dir].each do |dir|
+[config_dir, data_dir].each do |dir|
   directory dir do
     owner "postgres"
     group "postgres"
@@ -52,7 +52,7 @@ end
 runit_service "postgresql" do
   template_name "postgres"
   cookbook "postgresql"
-  options :config_dir => config_dir
+  options :config_dir => config_dir, :sock_dir => sock_dir
 end
 
 service "postgresql" do

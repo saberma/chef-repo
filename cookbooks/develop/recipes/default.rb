@@ -18,6 +18,7 @@
 #
 # tar zcf ~/Dropbox/Public/shopqi/chef-solo.tar.gz ./cookbooks
 
+require_recipe "imagemagick" #dragonfly不支持graphicmagick
 require_recipe "rvm::default"
 require_recipe "rvm::ruby_192"
 

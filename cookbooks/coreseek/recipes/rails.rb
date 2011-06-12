@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: develop
-# Recipe:: default
+# Cookbook Name:: coreseek
+# Recipe:: rails
 #
-# Copyright 2011, ShopQi, Inc.
+# Copyright 2011, saberma <mahb45@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,19 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# tar zcf ~/Dropbox/Public/shopqi/chef-solo.tar.gz ./cookbooks
+# 启动thinking-sphinx后台服务
 
-require_recipe "imagemagick" #dragonfly不支持graphicmagick
-require_recipe "rvm::default"
-require_recipe "rvm::ruby_192"
-
-#fixed(ruby-debug19 need): `mkdir': Permission denied
-gem_package 'linecache19'
-
-require_recipe "postgresql::default"
-require_recipe "unicorn::vagrant"
-require_recipe "resque::vagrant"
-
-require_recipe "coreseek"
-require_recipe "coreseek::rails"
-#require_recipe "develop::daemon"
+runit_service "coreseek" do
+  template_name "coreseek"
+  cookbook "coreseek"
+end

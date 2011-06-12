@@ -2,4 +2,4 @@
 exec 2>&1
 export HOME=/home/vagrant
 cd /vagrant
-exec rake resque:work QUEUE=* INTERVAL=1 2>&1
+exec rake resque:work QUEUE=ts_delta,* INTERVAL=1 2>&1

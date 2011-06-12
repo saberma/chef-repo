@@ -19,6 +19,6 @@
 # 启动thinking-sphinx后台服务
 
 runit_service "coreseek" do
-  template_name "coreseek"
+  template_name "vagrant"
   cookbook "coreseek"
 end

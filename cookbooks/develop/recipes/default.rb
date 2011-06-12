@@ -28,4 +28,6 @@ gem_package 'linecache19'
 require_recipe "postgresql::default"
 require_recipe "unicorn::vagrant"
 require_recipe "resque::vagrant"
+
+require_recipe "coreseek"
 #require_recipe "develop::daemon"

@@ -24,6 +24,7 @@ require_recipe "rvm::ruby_192"
 
 #fixed(ruby-debug19 need): `mkdir': Permission denied
 gem_package 'linecache19'
+package "scons" # for mustang gem
 
 require_recipe "postgresql::default"
 require_recipe "unicorn::vagrant"

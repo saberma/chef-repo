@@ -31,7 +31,7 @@ bin_search = "#{node[:coreseek][:install_path]}/bin/search"
 
 remote_file "/tmp/coreseek-#{coreseek_version}.tar.gz" do
   source "#{node[:coreseek][:url]}"
-  not_if { ::File.exists?("/tmp/coreseek-#{coreseek_version}.tar.gz") }
+  not_if { ::File.exists?(bin_search) }
 end
 
 execute "Extract CoreSeek source" do
